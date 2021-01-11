@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Modal, Row, Col, Button, Card } from "react-bootstrap";
-import spinner from "../img/spinner.png";
+import { Modal, Row, Col, Button, Card, ProgressBar } from "react-bootstrap";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+import hint from "../img/hint.png";
 class Modals extends Component {
   state = {
     openFirstModal: false,
@@ -32,11 +34,6 @@ class Modals extends Component {
     });
   };
   render() {
-    const ProgressLine = ({ done }) => (
-      <div className="progress-line">
-        <div className="progress-done" style={{ opacity: "1", width: `65%` }} />
-      </div>
-    );
     return (
       <div>
         <div>
@@ -57,9 +54,12 @@ class Modals extends Component {
           <Modal.Header className="mt-5 p-0 border-0">
             <Modal.Title className="font-weight-bolder w-100">
               Your Simulation is Calculating.
-              <i
-                className="fas fa-lightbulb ml-1"
-                style={{ color: "#336699" }}
+              <img
+                src={hint}
+                alt="Hint"
+                className="ml-3"
+                width={"25px"}
+                height={"25px"}
               />
             </Modal.Title>
           </Modal.Header>
@@ -73,10 +73,14 @@ class Modals extends Component {
                 </p>
               </Col>
               <Col lg={12} className="mt-3 mb-2 pt-0">
-                <img src={spinner} width="50px" height="50px" />
+                <Loader type="Circles" color="#336699" height={50} width={50} />
               </Col>
               <Col lg={12} className="mt-4 mb-1 pt-0">
-                <ProgressLine />
+                <ProgressBar
+                  animated
+                  now={30}
+                  style={{ marginLeft: "140px", marginRight: "138px" }}
+                />
               </Col>
               <Col lg={12} className="mt-0 mb-4 pt-0">
                 <p>Estimated Time: XX minutes</p>
@@ -101,9 +105,12 @@ class Modals extends Component {
           <Modal.Header className="mt-5 p-0 border-0">
             <Modal.Title className="font-weight-bolder w-100">
               Your Simulation is in a Queue.
-              <i
-                className="fas fa-lightbulb ml-1"
-                style={{ color: "#336699" }}
+              <img
+                src={hint}
+                alt="Hint"
+                className="ml-3"
+                width={"25px"}
+                height={"25px"}
               />
             </Modal.Title>
           </Modal.Header>
@@ -144,7 +151,7 @@ class Modals extends Component {
                     <Card className="mini-card-5">
                       <p className="mini-card-text">5</p>
                     </Card>
-                    <p className="ml-3">You</p>
+                    <p className="ml-3">YOU</p>
                   </Col>
                   <Col lg={1}>
                     <Card className="mini-card">
